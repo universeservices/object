@@ -1,6 +1,12 @@
 from fastapi import FastAPI
+from transformers import AutoFeatureExtractor, AutoModelForObjectDetection
 
 app = FastAPI()
+
+extractor = AutoFeatureExtractor.from_pretrained("TahaDouaji/detr-doc-table-detection")
+
+model = AutoModelForObjectDetection.from_pretrained("TahaDouaji/detr-doc-table-detection")
+
 
 @app.post("/predict/")
 def predict():
